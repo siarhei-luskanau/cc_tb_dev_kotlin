@@ -1,5 +1,6 @@
 package bot.telegram
 
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -22,11 +23,15 @@ class TelegramPoller(
                         launch {
                             try {
                                 handler(update.chatId, update.text)
+                            } catch (e: CancellationException) {
+                                throw e
                             } catch (e: Exception) {
                                 logger.error("Error handling message for chatId=${update.chatId}", e)
                             }
                         }
                     }
+                } catch (e: CancellationException) {
+                    throw e
                 } catch (e: Exception) {
                     logger.error("Error polling Telegram updates, retrying in 5s", e)
                     delay(5_000)
