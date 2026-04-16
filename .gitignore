@@ -15,7 +15,4 @@ xcuserdata/
 Pods/
 *.jks
 *yarn.lock
-/app/iosApp/iosApp.xcworkspace/contents.xcworkspacedata
-/app/iosApp/iosApp.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
-/app/iosApp/Podfile.lock
-/composeApp/composeApp.podspec
+/.env

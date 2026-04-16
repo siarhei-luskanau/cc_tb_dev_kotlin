@@ -75,7 +75,7 @@ class TelegramClient(
     @Serializable
     private data class UpdatesResponse(
         val ok: Boolean,
-        val result: List<Update>,
+        val result: List<Update> = emptyList(),
     )
 
     @Serializable
